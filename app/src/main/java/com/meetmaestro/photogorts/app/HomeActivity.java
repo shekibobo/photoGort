@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class PhotoUploadActivity extends ActionBarActivity implements ActionBar.TabListener {
+public class HomeActivity extends ActionBarActivity implements ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -33,6 +33,9 @@ public class PhotoUploadActivity extends ActionBarActivity implements ActionBar.
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+
+    final static int UPLOAD_FRAGMENT_INDEX = 0;
+    final static int GALLERY_FRAGMENT_INDEX = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +126,14 @@ public class PhotoUploadActivity extends ActionBarActivity implements ActionBar.
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch (position) {
+                case UPLOAD_FRAGMENT_INDEX:
+                    return PlaceholderFragment.newInstance(position + 1);
+                case GALLERY_FRAGMENT_INDEX:
+                    return PlaceholderFragment.newInstance(position + 1);
+                default:
+                    return PlaceholderFragment.newInstance(position + 1);
+            }
         }
 
         @Override
@@ -135,9 +145,9 @@ public class PhotoUploadActivity extends ActionBarActivity implements ActionBar.
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
             switch (position) {
-                case 0:
+                case UPLOAD_FRAGMENT_INDEX:
                     return getString(R.string.title_upload).toUpperCase(l);
-                case 1:
+                case GALLERY_FRAGMENT_INDEX:
                     return getString(R.string.title_gallery).toUpperCase(l);
             }
             return null;
@@ -172,7 +182,7 @@ public class PhotoUploadActivity extends ActionBarActivity implements ActionBar.
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_photo_upload, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_placeholder, container, false);
             return rootView;
         }
     }
