@@ -71,9 +71,9 @@ public class HomeActivity extends ActionBarActivity implements ActionBar.TabList
             // the TabListener interface, as the callback (listener) for when
             // this tab is selected.
             actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this));
+                actionBar.newTab()
+                    .setText(mSectionsPagerAdapter.getPageTitle(i))
+                    .setTabListener(this));
         }
     }
 
@@ -128,9 +128,9 @@ public class HomeActivity extends ActionBarActivity implements ActionBar.TabList
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case UPLOAD_FRAGMENT_INDEX:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return new PhotoUploadFragment();
                 case GALLERY_FRAGMENT_INDEX:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return new PhotoGalleryFragment();
                 default:
                     return PlaceholderFragment.newInstance(position + 1);
             }
