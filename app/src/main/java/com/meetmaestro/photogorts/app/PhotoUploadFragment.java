@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-
 /**
  * A Fragment containing the interface for uploading a photo.
  *
